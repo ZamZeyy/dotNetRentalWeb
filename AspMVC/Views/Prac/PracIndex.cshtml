@@ -1,0 +1,105 @@
+﻿@model List<AspMVC.Models.CarViewModel>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(function() {
+            $('.delete-button').click(function(e) {
+                e.preventDefault();
+                var button = $(this);
+                var id = button.data('id');
+
+                // delete confirmation 
+                var confirmDelete = confirm('Are you sure you want to delete this car?');
+                if (confirmDelete) {
+                    $.ajax({
+                        url: '/Prac/Delete',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function(result) {
+                            if(result.success) {
+                                button.closest('.col-md-4').remove();
+                            }
+                            else {
+                                // handle error
+                                console.error(result.error);
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}
+
+<style>
+.Pheader {
+background-color: #B660CD;
+color: white;
+}
+</style>
+<style>
+    .Pbody {
+        background-color: #fbf5ff;
+        color: black;
+    }
+</style>
+<style>
+.cards-body {
+padding: 1.25rem;
+}
+.card {
+margin-bottom: 30px;
+transition: transform 0.3s; 
+}
+
+.card:hover {
+    transform: scale(1.05); 
+}
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to the Rental list!</h1>
+    <p>This the place where you can find Vehicles available for renting!</p>
+</div>
+
+@{
+    int counter = 0;
+}
+
+<div class="row">
+    @foreach (var rental in Model)
+    {
+        if(counter != 0 && counter % 3 == 0)
+        {
+            @: </div>
+            @: <div class="row">
+        }
+
+        @:<div class="col-md-4">
+        @:   <a href="@Url.Action("Details", "Prac", new { id = rental.Id })" style="text-decoration: none; color: inherit;">
+        @:    <div class="card hover" style="width: 100%;">
+        @:        <div class="card-header Pheader">
+        @:            <h5>Vehicle Details</h5>
+        @:        </div>
+        @:        <div class="cards-body Pbody">
+        @:          <div class="d-flex justify-content-center align-items-center">  
+        @:          <img src="@rental.Image" class="card-img-top" alt="Image not available" style = "height: 200px;" onerror="this.src='https://cataas.com/cat/says/This%20is%20a%20car!';">
+        @:          </div>
+        @:            <h4>@rental.Make @rental.Year @rental.Model</h4>
+        @:            <h7>@rental.Miles Miles</h7>
+        @:        </div>
+        @:        <div class="card-footer">
+        @:            <a class="btn btn-primary" href="@Url.Action("Edit", "Prac", new { id = rental.Id })">Edit</a>
+        @:            <button class="btn btn-danger delete-button" data-id="@rental.Id">Remove</button>
+        @:        </div>
+        @:    </div>
+        @:   </a> 
+        @:</div>
+
+        counter++;
+    }
+    @if (counter % 3 != 0)
+    {
+        @: </div>
+    }
+

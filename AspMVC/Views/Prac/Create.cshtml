@@ -1,0 +1,61 @@
+﻿@model CarViewModel
+
+<link rel="stylesheet" href="C:\Users\Mrjud\Desktop\c#\AspMVC\AspMVC\wwwroot\css\site.css">
+<div class="text-center">
+    <h1 class="display-4">Create a rental car</h1>
+    <p>CRC</p>
+</div>
+<hr />
+<style>
+ .Pheader {
+        background-color: #B660CD;
+  color: white;
+}
+</style>
+<style>
+    .Pbody {
+        background-color: #fbf5ff;
+        color: black;
+    }
+</style>
+
+
+<div class="row justify-content-center">
+    <div class="col-6">
+        <div class="card shadow-lg">
+            <div class="card-header Pheader"  >
+                <h5 class="card-title text-center">Car Details</h5>
+            </div>
+            <div class="card-body Pbody">
+                <form asp-controller="Prac" asp-action="Create" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Make</label>
+                        <input asp-for="Make" type="text" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Model</label>
+                        <input asp-for="Model" type="text" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Year</label>
+                        <input asp-for="Year" type="number" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Miles</label>
+                        <input asp-for="Miles" type="number" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="Image" class="form-label">Upload Image</label>
+                        <input type="text" class="form-control" id="Image" asp-for="Image" placeholder="Enter Image URL:">
+                    </div>
+                    <hr />
+                    <div class="text-center btn-purple btn-animated">
+                        <button type="submit" class="btn Pheader w-100">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
