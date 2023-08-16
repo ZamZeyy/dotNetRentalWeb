@@ -33,6 +33,15 @@ body {
         background-color: darkpurple;
         animation: pulse 1s infinite;
     }
+.Pheader {
+    background-color: #B660CD;
+    color: white;
+}
+
+.Pbody {
+    background-color: #fbf5ff;
+    color: black;
+}
 
 @keyframes pulse {
     0% {

@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<link rel="stylesheet" href="C:\Users\Mrjud\Desktop\c#\AspMVC\AspMVC\wwwroot\css\site.css">
+<html>
+
+
+<head>
+    <title>Car Color Changer</title>
+   
+</head>
+
+<body>
+<div class="card">
+    <div class="card-header Pheader">Colour Selector</div>
+    <div class="card-content">
+            <img id="carImage" src="https://purepng.com/public/uploads/large/purepng.com-red-mazda-mx-5-miata-carcarvehicletransportmazda-961524643717i0vid.png" width="500" height="300">
+    </div>
+
+    <div class="card-footer Pheader">
+            <button class="buttonM" style="background-color: #FF0000;" onclick="changeColor('hue-rotate(0deg)')"></button>
+            <button class="buttonM" style="background-color: #FFA500;" onclick="changeColor('hue-rotate(30deg)')"></button>
+            <button class="buttonM" style="background-color: #FFFF00;" onclick="changeColor('hue-rotate(60deg)')"></button>
+            <button class="buttonM" style="background-color: #7FFF00;" onclick="changeColor('hue-rotate(90deg)')"></button>
+            <button class="buttonM" style="background-color: #008000;" onclick="changeColor('hue-rotate(120deg)')"></button>
+            <button class="buttonM" style="background-color: #00FF7F;" onclick="changeColor('hue-rotate(150deg)')"></button>
+            <button class="buttonM" style="background-color: #00FFFF;" onclick="changeColor('hue-rotate(180deg)')"></button>
+            <button class="buttonM" style="background-color: #007FFF;" onclick="changeColor('hue-rotate(210deg)')"></button>
+            <button class="buttonM" style="background-color: #0000FF;" onclick="changeColor('hue-rotate(240deg)')"></button>
+            <button class="buttonM" style="background-color: #8A2BE2;" onclick="changeColor('hue-rotate(270deg)')"></button>
+            <button class="buttonM" style="background-color: #FF00FF;" onclick="changeColor('hue-rotate(300deg)')"></button>
+            <button class="buttonM" style="background-color: #FF007F;" onclick="changeColor('hue-rotate(330deg)')"></button>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    function changeColor(filter) {
+        const carImage = document.getElementById('carImage');
+        carImage.style.filter = filter;
+    }
+</script>
+
+<style>
+    .card img {
+        display: block;
+        margin: 0 auto;
+}
+
+    .buttonM {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%; /* Makes the button a circle at 50% */
+        margin: 5px; /* Gives spacing between each button */
+        border: 1px solid #ccc; /* Slight border to differentiate against similar colors */
+        cursor: pointer; /* Changes the cursor to indicate it's clickable */
+    }
+
+    .card-footer {
+        display: flex; /* Aligns buttons in a row */
+        justify-content: center; /* Center aligns buttons */
+    }
+
+    
+</style>
